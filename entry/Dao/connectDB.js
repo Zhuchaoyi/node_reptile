@@ -9,7 +9,11 @@ const connection = mysql.createConnection({
     password: 'zhuchaoyi',
     database: 'sys'
 });
+let con = null;
 
-connection.connect();
-
-exports.connection = connection;
+exports.connection = function () {
+    if (!con) {
+        con = connection.connect();
+    }
+    return con;
+};

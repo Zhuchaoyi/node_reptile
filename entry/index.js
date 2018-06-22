@@ -9,7 +9,7 @@ const os = require('os');
 const getSolSession = require('../entry/getSolSession');
 const {connection} = require('./Dao/connectDB');
 const {getArticles} = require('./Dao/DBoperate');
-const {getRead, getCollection} = require('./utils/TEXTutils')
+const {getRead, getCollection} = require('./utils/TEXTutils');
 let {listConfig} = require('../entry/config');
 
 let Observer = {};

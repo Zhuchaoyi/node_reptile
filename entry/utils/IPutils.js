@@ -9,7 +9,7 @@ const {connection} = require('../Dao/connectDB.js');
 exports.fromDB = function () {
     return new Promise(((resolve, reject) => {
         let sql = 'select * from sys.ips where status <> 1 limit 10';
-        connection.query(sql, (err, res) => {
+        connection().query(sql, (err, res) => {
             if (err) {
                 reject(err);
             } else {
@@ -38,7 +38,9 @@ exports.fromWeb = function () {
 
         request(options, function (error, response, body) {
             try {
-                if (error) throw error;
+                if (error) {
+                    throw error;
+                }
                 if (/meta.*charset=gb2312/.test(body)) {
                     body = iconv.decode(body, 'gbk');
                 }
@@ -60,7 +62,7 @@ exports.toDB = function (ips) {
             resArr.push(`("${item}")`);
         });
         sql += resArr.join(',');
-        connection.query(sql, (err, res) => {
+        connection().query(sql, (err, res) => {
             if (err) {
                 reject(err);
             } else {

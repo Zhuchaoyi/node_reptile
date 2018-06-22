@@ -25,8 +25,7 @@ function handle(order, page) {
                         process.send({
                             order: order,
                             body: body
-                        })
-                        ;
+                        });
                     }
                 } catch (e) {
                     // console.log(index, 'inner error');
